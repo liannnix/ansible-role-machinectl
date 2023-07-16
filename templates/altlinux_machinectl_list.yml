@@ -1,0 +1,12 @@
+---
+- example: 'ansible         container systemd-nspawn altlinux 20230711 192.168.21.221…'
+  getval: '(?P<name>\S+)\s+(?P<class>\S+)\s+(?P<service>\S+)\s+(?P<os>\S+)\s+(?P<version>\S+)\s+(?P<address>[0-9a-fA-F.:]+)[...]?'
+  result:
+    "{{ name }}":
+      name: "{{ name }}"
+      class: "{{ class }}"
+      service: "{{ service }}"
+      os: "{{ os }}"
+      version: "{{ version }}"
+      address: "{{ address }}"
+  shared: True

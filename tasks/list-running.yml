@@ -1,0 +1,13 @@
+---
+- name: get running systemd-nspawn containers
+  command: machinectl list --no-pager --no-legend
+  register: machinectl_output
+  changed_when: False
+
+- name: parse machinectl output
+  ansible.utils.cli_parse:
+    text: "{{ machinectl_output.stdout }}"
+    parser:
+      name: ansible.netcommon.native
+      template_path: "{{ role_path }}/templates/altlinux_machinectl_list.yml"
+    set_fact: containers
