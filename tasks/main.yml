@@ -1,2 +1,6 @@
 ---
 # tasks file for ansible-role-machinectl
+
+- name: run action {{ container_action }}
+  include_tasks: "{{ container_action }}.yml"
+  when: container_action in container_actions

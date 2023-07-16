@@ -1,2 +1,11 @@
 ---
 # vars file for ansible-role-machinectl
+
+container_actions:
+  - list-running
+  - list-available
+  - start
+  - stop
+  - reboot
+  - clone
+  - new

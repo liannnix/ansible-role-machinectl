@@ -1,2 +1,20 @@
 ---
 # defaults file for ansible-role-machinectl
+
+## action
+# list-running
+# list-available
+# start
+#   container_name
+# stop 
+#   container_name
+# reboot
+#   container_name
+# clone
+#   container_name container_name_to
+# new 
+#   conatiner_name container_url
+container_action: list-running
+container_name: 
+container_name_to:
+container_url:
