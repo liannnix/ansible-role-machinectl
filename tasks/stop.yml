@@ -1,0 +1,11 @@
+---
+- name: get systemd-nspawn container [{{ container_name }}] status
+  command: machinectl show {{ container_name }} --no-pager --no-legend -p State --value
+  register: machinectl_show_output
+  changed_when: False
+  failed_when: False
+
+- name: stop systemd-nspawn container [{{ container_name }}]
+  command: machinectl stop {{ container_name }}
+  when: machinectl_show_output.stdout == "running"
+
