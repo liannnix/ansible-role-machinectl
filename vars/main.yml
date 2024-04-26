@@ -9,3 +9,5 @@ container_actions:
   - reboot
   - clone
   - new
+  - remove
+  - config

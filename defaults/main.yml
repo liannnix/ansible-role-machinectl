@@ -14,7 +14,18 @@
 #   container_name container_name_to
 # new 
 #   conatiner_name container_url
+# remove 
+#   conatiner_name
+# config
+#   container_name
+#   container_config
+#     
 container_action: list-running
 container_name: 
 container_name_to:
 container_url:
+
+container_config:
+  network_interface: vms-priv
+  private_users: no
+  capability: CAP_SYS_ADMIN

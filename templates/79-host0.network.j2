@@ -1,0 +1,20 @@
+[Match]
+    Virtualization = container
+    Name = host0
+
+[Network]
+    DHCP = {{ "no" if not network_config.dhcp else network_config.dhcp }} # no
+    IPv6AcceptRA = {{ "no" if not network_config.accept_ra else "yes" }} # no
+    Address = {{ network_config.v4.ip }} # 192.168.20.25/24
+    Gateway = {{ network_config.v4.gateway }} # 192.168.20.1
+    Address = {{ network_config.v6.ip }} # 2a02:e840:1003:20::25/64
+    Gateway = {{ network_config.v6.gateway }} # 2a02:e840:1003:20::1
+    DNS = {{ network_config.dns }} # 192.168.21.53
+    Domains = {{ network_config.domains }} # giran.cyou
+
+[DHCPv4]
+    UseDomains = yes
+    UseDNS = yes
+
+[Link]
+    RequiredFamilyForOnline = both

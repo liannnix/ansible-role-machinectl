@@ -1,0 +1,11 @@
+---
+- name: get available systemd-nspawn containers
+  include_tasks: "list-available.yml"
+
+- name: apply [{{ container_name }}] container config (/etc/systemd/nspawn/{{ container_name }}.nspawn)
+  template:
+    src: container.nspawn.j2
+    dest: /etc/systemd/nspawn/{{ container_name }}.nspawn
+  when:
+    - container_name in containers
+

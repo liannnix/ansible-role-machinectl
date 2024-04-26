@@ -11,3 +11,8 @@
       name: ansible.netcommon.native
       template_path: "{{ role_path }}/templates/altlinux_machinectl_list_images.yml"
     set_fact: containers
+
+- name: list available containers
+  debug:
+    msg: "{{ containers | list }}"
+  when: containers is defined

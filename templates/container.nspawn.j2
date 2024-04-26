@@ -1,0 +1,11 @@
+[Network]
+    Bridge = {{ container_config.network_interface }} # vms-priv
+
+[Exec]
+    PrivateUsers = {{ "no" if not container_config.private_users else container_config.private_users }} # no
+    Capability = {{ container_config.capability }} # CAP_SYS_ADMIN
+    LimitNOFILE = infinity
+    SystemCallFilter = @keyring
+
+[Files]
+    PrivateUsersOwnership = chown

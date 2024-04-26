@@ -1,0 +1,12 @@
+---
+- name: get available systemd-nspawn containers
+  include_tasks: "list-available.yml"
+
+- name: remove existing [{{ container_name }}] systemd-nspawn container
+  command:
+    cmd: |
+      machinectl remove
+      "{{ container_name }}"
+    removes: /var/lib/machines/{{ container_name }}
+  when: container_name in containers
+

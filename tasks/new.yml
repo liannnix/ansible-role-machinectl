@@ -1,0 +1,13 @@
+---
+- name: get available systemd-nspawn containers
+  include_tasks: "list-available.yml"
+
+- name: create new [{{ container_name }}] systemd-nspawn container from URL [{{ container_url }}]
+  command:
+    cmd: |
+      machinectl pull-tar
+      "{{ container_url }}"
+      "{{ container_name }}"
+    creates: /var/lib/machines/{{ container_name }}
+  when: container_name not in containers
+

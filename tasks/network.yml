@@ -1,0 +1,11 @@
+---
+- name: get available systemd-nspawn containers
+  include_tasks: "list-available.yml"
+
+- name: apply [{{ container_name }}] network config ({{ container_name }}:/etc/systemd/network/79-host0.network)
+  template:
+    src: 79-host0.network.j2
+    dest: /etc/systemd/nspawn/{{ container_name }}.nspawn
+  when:
+    - container_name in containers
+

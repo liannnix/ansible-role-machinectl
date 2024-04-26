@@ -1,0 +1,15 @@
+---
+- name: get available systemd-nspawn containers
+  include_tasks: "list-available.yml"
+
+- name: clone existing [{{ container_name }}] systemd-nspawn container to [{{ container_name_to }}]
+  command:
+    cmd: |
+      machinectl clone
+      "{{ container_name }}"
+      "{{ container_name_to }}"
+    creates: /var/lib/machines/{{ container_name_to }}
+  when:
+    - container_name in containers
+    - container_name_to not in containers
+
